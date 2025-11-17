@@ -1,4 +1,4 @@
-class Utility:
+class Polynomials:
     def __init__(self):
         pass
 
