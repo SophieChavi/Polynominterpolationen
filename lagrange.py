@@ -1,8 +1,8 @@
-from utility import Utility
+from polynomials import Polynomials
 
 class Lagrange:
     def __init__(self) -> None:
-        self.ut = Utility()
+        self.ut = Polynomials()
 
     # li Funktion erstellen
     def create_li_function(self, stützstellen):
@@ -31,7 +31,7 @@ class Lagrange:
         Li_function = []
         Li_base = []
         Li_function_teil = 0
-        util = Utility()
+        util = Polynomials()
 
         for i in range(n):
 
@@ -68,3 +68,4 @@ class Lagrange:
             polynom_result.append(teil_poly)
         
         return polynom_result
+    
