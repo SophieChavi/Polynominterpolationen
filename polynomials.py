@@ -152,6 +152,5 @@ class Polynomials:
             list.append(0)
 
         list.append(1)
-
         return list
     
