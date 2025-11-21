@@ -154,3 +154,4 @@ class Polynomials:
         list.append(1)
 
         return list
+    
