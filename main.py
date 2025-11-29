@@ -1,8 +1,8 @@
 # Sützpunkte abfrage, Werte prüfen, Eingabe für weitere Punkte und Ausgabe 
 print("Polynominterpolationen, hier werden die ST abgefragt")
       
-#from hermite import Hermite
-#from newton import Newton
+from hermite import Hermite
+from newton import Newton
 from lagrange import Lagrange
 from polynomials import Polynomials
 
@@ -74,16 +74,20 @@ def create_polynom(xy_values):
             xy_len, y_values, Li_function)
         norm_poly = lagrange_polynom.normalform_poly(xy_len, polynom)
         norm_poly = util.round_list(norm_poly, 3)
-        pretty_polynom = "Lagrange: p(x) =" + util.create_string_polynomial(norm_poly) + "\n"
+        pretty_polynom = "\nLagrange: p(x) =" + util.create_string_polynomial(norm_poly) + "\n"
 
         # Newton
         newt = Newton()
-        newt_coeffs = newt.newton_div_diff(x_values, y_values)
-        poly_coeffs = util.generate_polynom_coefficients(
-            newt_coeffs, x_values)
+        #newt_coeffs = newt.newton_div_diff(x_values, y_values)     -> nicht mehr passend
+        #poly_coeffs = util.generate_polynom_coefficients(
+        #    newt_coeffs, x_values)
+        #poly_coeffs = util.round_list(poly_coeffs, 3)
+        #pretty_newt = "Newton: p(x) = " + util.create_string_polynomial(
+        #    poly_coeffs)
+        poly_coeffs = newt.build_newton(x_values, y_values)
         poly_coeffs = util.round_list(poly_coeffs, 3)
-        pretty_newt = "Newton: p(x) = " + util.create_string_polynomial(
-            poly_coeffs)
+
+        pretty_newt = "Newton: p(x) = " + util.create_string_polynomial(poly_coeffs)
 
 
         return [pretty_polynom, pretty_newt]
