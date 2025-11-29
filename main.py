@@ -50,7 +50,7 @@ def create_polynom(xy_values):
         print_header("Hermite-Interpolation")
         hermite_polynom = Hermite()
         herm_coef = hermite_polynom.hermite_divided_differences(x_values, y_values, xy_values)
-        print("herm_coef: ", herm_coef)
+        print("Hermite Koeffiziente: ", herm_coef)
         standard_form_polynom_coef = util.generate_polynom_coefficients(
             herm_coef, x_values)
         standard_form_polynom_coef = util.round_list(
