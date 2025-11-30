@@ -32,7 +32,8 @@ class Lagrange:
         Li_base = []
         Li_function_teil = 0
         util = Polynomials()
-
+        
+        print('Dazugehörige Basisfunktionen L_i(x):')
         for i in range(n):
 
             for j in range(n):
