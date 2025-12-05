@@ -58,19 +58,9 @@ class Hermite:
     def get_derivation_value(self, xy_list, x_values, step):
         derivation_value = 0
         for i in range(len(xy_list) - 1):
+        # Finde die Stelle, an der der x Wert übereinstimmt
             if xy_list[i][0] == x_values:
+                # Ableitungswert steht step Positionen weiter unten in der Liste
                 derivation_value = xy_list[i + step][1]
-                break
+                break # Wert gefunden, Schleife beenden
         return derivation_value
-
-    def build_polynomial(self):
-        # Erzeugt das vollständige Polynom in der normalen Potenzform
-        # P(x) = c0 + c1*x + c2*x^2 + ...
-        P = [0]        # Startpolynom
-        basis = [1]    # Startbasis für das Newton Fundamentpolynom
-        for i in range(len(xs)):
-            term = [c * coeffs[i] for c in basis]
-            P = self.util.add_polynoms(P, term)
-            basis = self.util.multiply_polynoms(basis, [-xs[i], 1])
-
-        return P # In der Normalform zurückgeben

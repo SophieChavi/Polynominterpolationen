@@ -8,9 +8,9 @@ from polynomials import Polynomials
 
 
 # Verschönerte Ausgabe 
-def print_header(text):
+def print_header(t1ext):
     print("\n" + "-" * 60)
-    print(text.center(60))
+    print(t1ext.center(60))
     print("-" * 60 + "\n")
 
 

@@ -1,10 +1,11 @@
 from polynomials import Polynomials
 
 class Newton:
-
+    #Konstruktor: Polynomials wird als self.util gespeichert. 
     def __init__(self):
         self.util = Polynomials()
     # Sophie: musste minimale Änderungen machen damit ich Newton in Main verwenden kann: self
+
     def divided_diff(self,xs,ys):
         # Anzahl der Stützstellen
         n = len(xs)
