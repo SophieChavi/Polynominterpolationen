@@ -31,8 +31,8 @@ class Newton:
             coeffs.append(table[0])
         return coeffs
 
-    def build_newton(self,xs, ys):
-        # Schritt 1: Newton Koeffizienten mit dividierten Differenzen berechnen
+    def build_newton(self,xs, ys): # das Interpolationspolynom aus den Koeffizienten in Normalform aufbauen
+        # Newton Koeffizienten mit dividierten Differenzen berechnen
         coeffs = self.divided_diff(xs, ys)
         #n = len(xs)  -> kurz entfernt / S
 
@@ -56,8 +56,8 @@ class Newton:
 
         # NEU: baut Polynom direkt in der Normalform, damit ich sie in der main verwenden kann :)
         for i in range(len(xs)):
-            term = [c * coeffs[i] for c in basis]
-            P = self.util.add_polynoms(P, term)
-            basis = self.util.multiply_polynoms(basis, [-xs[i], 1])
+            term = [c * coeffs[i] for c in basis] #multipliziere das aktuelle Basispolynom mit dem Koeffizienten
+            P = self.util.add_polynoms(P, term) #addiere diesen Term zu P
+            basis = self.util.multiply_polynoms(basis, [-xs[i], 1]) #erweitere basis um den Faktor (x - x_i) mit multiply_polynoms.
 
         return P

@@ -19,7 +19,7 @@ def print_stuetzpunkte(xy_values):
     print("   x-Wert   |   y-Wert  ")
     print("------------+-----------")
     for x, y in xy_values:
-        print(f"{x:10} | {y:9}")
+        print(f"{x:10}  | {y:9}")
     print()
 
 def collect_xy_values():
