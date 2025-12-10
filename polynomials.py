@@ -93,26 +93,30 @@ class Polynomials:
         coeffs = self.flip_array(coeffs)
         str_poly = ""
 
-        for i in coeffs:
+        for coef in coeffs:
+            if coef == 0:
+                degree -= 1
+                continue
             if degree > 1:
-                if str(i) == "0.0":
-                    degree = degree - 1
-                    continue
-                str_poly = str_poly + \
-                    "(" + str(i) + ")*x^" + str(degree) + " + "
+                if coef == 1:
+                    str_poly += f"x^{degree} + "
+                elif coef == -1:
+                    str_poly += f"-x^{degree} + "
+                else:
+                    str_poly += f"({coef})x^{degree} + "
 
             elif degree == 1:
-                if str(i) == "0.0":
-                    degree = degree - 1
-                    continue
-                str_poly = str_poly + "(" + str(i) + ")*x "
-            else:
-                if str(i) == "0.0":
-                    degree = degree - 1
-                    continue
-                str_poly = str_poly + " + (" + str(i) + ")"
+                if coef == 1:
+                    str_poly += "x "
+                elif coef == -1:
+                    str_poly += "-x "
+                else:
+                    str_poly += f"({coef})x "
 
-            degree = degree - 1
+            else:
+                str_poly += f"+ ({coef})"
+
+            degree -= 1
         return str_poly
 
     def flip_array(self, arr):

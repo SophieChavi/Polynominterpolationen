@@ -20,7 +20,6 @@ class Newton:
 
             # für jede Zeile dieser Spalte
             for i in range(n - k):
-                # Formel: f[x_i, ..., x_{i+k}] = (table[i+1] - table[i]) / (x_{i+k} - x_i)
                 v = (table[i + 1] - table[i]) / (xs[i + k] - xs[i])
                 new.append(v)
 
@@ -36,28 +35,34 @@ class Newton:
         coeffs = self.divided_diff(xs, ys)
         #n = len(xs)  -> kurz entfernt / S
 
-        # P(x) = 0 zu Beginn
         P = [0]
 
         # "basis" ist das aktuelle Basispolynom:
         # Start: 1 -> (x - x0) -> (x - x0)(x - x1) -> (x - x0)(x - x1)(x - x2)
         basis = [1]
 
-        # DER ALTE CODE: Wollte ihn nicht einfach löschen ._.
-        #for i in range(n):
-        ## term(x) = a_i * basis(x)
-        ## also in Polynomform: wir multiplizieren jeden Koeffizienten der basis mit a_i
-        #    term = [c * coeffs[i] for c in basis]
-        #    P = add_polynoms(P, term)
-
-        #    # Basis für den nächsten Schleifendurchlauf erweitern:
-        #    basis = multiply_polynoms(basis, [-xs[i], 1])
-        #return P #Normalform zurückgeben
-
         # NEU: baut Polynom direkt in der Normalform, damit ich sie in der main verwenden kann :)
         for i in range(len(xs)):
             term = [c * coeffs[i] for c in basis] #multipliziere das aktuelle Basispolynom mit dem Koeffizienten
             P = self.util.add_polynoms(P, term) #addiere diesen Term zu P
             basis = self.util.multiply_polynoms(basis, [-xs[i], 1]) #erweitere basis um den Faktor (x - x_i) mit multiply_polynoms.
-
         return P
+    
+    def get_newton_basis(self, xs):
+        basis = [[1]]   # B0(x) = 1
+        
+        for i in range(1, len(xs)):
+            next_basis = self.util.multiply_polynoms(basis[-1], [-xs[i-1], 1])
+            basis.append(next_basis)
+
+        return basis
+
+    def printable_newton_basis(self, xs):
+        basis = self.get_newton_basis(xs)
+        result = []
+
+        for i, poly in enumerate(basis):
+            poly = [float(c) for c in poly]
+            formatted = self.util.create_string_polynomial(poly.copy())
+            result.append(f"B{i}(x) = {formatted}")
+        return result

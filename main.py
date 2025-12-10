@@ -1,5 +1,6 @@
 # Sützpunkte abfrage, Werte prüfen, Eingabe für weitere Punkte und Ausgabe 
 print("Polynominterpolationen, hier werden die ST abgefragt")
+print("RUNNING main.py FROM:", __file__)
       
 from hermite import Hermite
 from newton import Newton
@@ -34,10 +35,9 @@ def collect_xy_values():
         xy_point = (int(input("Bitte Stützstelle des " + str(i + 1) + "ten Punktes eingeben: ")),
                     int(input("Bitte Stützwert des " + str(i + 1) + "ten Punktes eingeben: ")))
         xy_values.append(xy_point)
-        i += 1
+        i += 12
 
     return xy_values
-
 
 def create_polynom(xy_values):
     util = Polynomials()
@@ -88,7 +88,10 @@ def create_polynom(xy_values):
         poly_coeffs = util.round_list(poly_coeffs, 3)
 
         pretty_newt = "Newton: p(x) = " + util.create_string_polynomial(poly_coeffs)
-
+        basis_strings = newt.printable_newton_basis(x_values)
+        print("\nDazugehörige Newton-Basisfunktionen B_i(x):")
+        for line in basis_strings:
+            print(line)
 
         return [pretty_polynom, pretty_newt]
 
