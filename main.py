@@ -35,7 +35,7 @@ def collect_xy_values():
         xy_point = (int(input("Bitte Stützstelle des " + str(i + 1) + "ten Punktes eingeben: ")),
                     int(input("Bitte Stützwert des " + str(i + 1) + "ten Punktes eingeben: ")))
         xy_values.append(xy_point)
-        i += 12
+        i += 1
 
     return xy_values
 
