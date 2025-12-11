@@ -96,6 +96,7 @@ def create_polynom(xy_values):
         return [pretty_polynom, pretty_newt]
 
 
+
 if __name__ == '__main__':
     util = Polynomials()
     run: bool = True
@@ -107,7 +108,20 @@ if __name__ == '__main__':
 
         for i in polynom:
             print(i)
-        
+
+        # -----------------------------------------------
+        # Hier kommt der neue Test für Polynom-Multiplikation
+        # -----------------------------------------------
+        print("\n\nMöchten Sie die Polynom-Multiplikation testen?")
+        print("1 - Ja, Multiplikation testen")
+        print("Enter - Nein, weiter")
+
+        choice = input("> ")
+
+        if choice == "1":
+            util.test_polynomial_multiplication()
+        # -----------------------------------------------
+
         (user_input) = input("\nNeustart: beliebige Taste. \nProgramm beenden: Schreibe 'exit'.\n")
         if(user_input == "exit"):
             run = False

@@ -158,3 +158,24 @@ class Polynomials:
         list.append(1)
         return list
     
+    # ------------------------------------------------------------
+    # Testfunktion für Polynom-Multiplikation: 
+    # ------------------------------------------------------------
+    def test_polynomial_multiplication(self):
+        print("\n=== Test: Polynom-Multiplikation ===")
+
+        print("Gib Polynom 1 an (Koeffizienten durch Komma getrennt, z.B. 1,5,2):")
+        pol1 = list(map(float, input("> ").split(",")))
+
+        print("Gib Polynom 2 an (z.B. 6,1,4,3):")
+        pol2 = list(map(float, input("> ").split(",")))
+
+        # Multiplikation durchführen
+        result = self.multiply_polynoms(pol1, pol2)
+
+        print("\nErgebnis als Array:")
+        print(result)
+
+        print("\nErgebnis als Polynom:")
+        print(self.create_string_polynomial(result))
+        print("======================================\n")
