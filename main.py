@@ -93,6 +93,15 @@ def create_polynom(xy_values):
         for line in basis_strings:
             print(line)
 
+        x_eval = float(input("\nFür welchen x-Wert soll das Polynom ausgewertet werden? "))
+
+        wert_lagrange = util.evaluate_polynomial(norm_poly, x_eval)
+        wert_newton   = util.evaluate_polynomial(poly_coeffs, x_eval)
+
+        print("\nAuswertung:")
+        print(f"Lagrange: p({x_eval}) = {wert_lagrange}")
+        print(f"Newton:   p({x_eval}) = {wert_newton}")
+
         return [pretty_polynom, pretty_newt]
 
 

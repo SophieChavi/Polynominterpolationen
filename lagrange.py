@@ -69,4 +69,3 @@ class Lagrange:
             polynom_result.append(teil_poly)
         
         return polynom_result
-    

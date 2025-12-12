@@ -1,6 +1,14 @@
 class Polynomials:
     def __init__(self):
         pass
+    
+    def evaluate_polynomial(self, coeffs, x):
+        result = 0
+        power = 0
+        for c in coeffs:
+            result += c * (x ** power)
+            power += 1
+        return result
 
     def generate_polynom_coefficients(self, coefficients, x_values):
         final_pol = []
